@@ -11,11 +11,8 @@
             <v-img
                 :src="image.urls.small"
                 :aspect-ratio="1.7"
-                
                 >
             </v-img>
-            <!-- <zoom :img-normal="image.urls.small"></zoom> -->
-            <!-- <img :src="image.urls.small" width="100%" height="100%" :alt="image.urls.small"> -->
 
             <v-card-actions class="pl-8 pt-4 pb-0 custo-caption1 text-h6" v-text="image.user.name"></v-card-actions>
             <v-card-actions 
