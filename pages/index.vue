@@ -151,11 +151,12 @@ export default {
 
 		@include media("<=phone"){
 			grid-template-columns: 1fr;
-			grid-template-rows: repeat(13, 60vw);
+			
+			grid-template-rows: repeat(13, 70vw);
 		}
 		@include media(">phone", "<tablet"){
 			grid-template-columns: 1fr;
-			grid-template-rows: repeat(13, 60vw);
+			grid-template-rows: repeat(13, 70vw);
 		}	
 		@include media(">=tablet", "<desktop"){
 			grid-template-columns: repeat(2, 1fr);
