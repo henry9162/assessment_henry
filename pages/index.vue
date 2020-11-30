@@ -5,7 +5,7 @@
 				<div>
 					<v-text-field 
 						rounded flat solo 
-						label="Search for photo" 
+						label="Search for a photo" 
 						v-model="search"
 						@keyup.enter="getResult"
 						prepend-inner-icon="mdi-magnify">
@@ -110,112 +110,405 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	.halfBlack {
-        background: rgba(black, 0.2) !important;
-    }
-	.search-div {
-		background: #DDE2E9;
-		height: 15rem;
+@import "../assets/variables.scss";
 
-		.search-wrapper {
-			width: 50%;
+.demo {
+	width: 100%;
+	height: 100%;
+}
+.halfBlack {
+	background: rgba(black, 0.2) !important;
+}
+.search-div {
+	background: #DDE2E9;
+	height: 15rem;
+
+	.search-wrapper {
+		width: 50%;
+
+		@include media("<=phone"){
+			width: 70%;
+		}
+
+		@include media(">phone", "<=425px"){
+			width: 70%;
 		}
 	}
+}
 
-	.custom-fit {
-		width: 100% !important;
-    	height: 100% !important;
-    	object-fit: cover;
-	}
+.custom-fit {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover;
+}
 
-	.image-section {
-		.custom-grid {
-			display: grid !important;
+.image-section {
+	.custom-grid {
+		display: grid !important;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(5, 25vw);
+		grid-gap: 3rem !important;
+
+		@include media("<=phone"){
+			grid-template-columns: 1fr;
+			grid-template-rows: repeat(13, 60vw);
+		}
+		@include media(">phone", "<tablet"){
+			grid-template-columns: 1fr;
+			grid-template-rows: repeat(13, 60vw);
+		}	
+		@include media(">=tablet", "<desktop"){
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(6, 50vw);
+		}
+		@include media(">=desktop"){
 			grid-template-columns: repeat(3, 1fr);
 			grid-template-rows: repeat(5, 25vw);
-			grid-gap: 3rem !important;
+		}
 
-			.grid-item {
-				&.grid-0 {
+		.grid-item {
+			&.grid-0 {
+				@include media("<=phone"){
 					grid-column-start: 1;
-    				grid-column-end: 2;
+					grid-column-end: 2;
 					grid-row-start: 1;
-    				grid-row-end: 2;
+					grid-row-end: 2;
+
 				}
-				&.grid-1 {
+				@include media(">phone", "<tablet"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 1;
+					grid-row-end: 2;
+				}
+				@include media(">=tablet", "<desktop"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 1;
+					grid-row-end: 2;
+				}
+				@include media(">=desktop"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 1;
+					grid-row-end: 2;
+				}
+			}
+			&.grid-1 {
+				@include media("<=phone"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 2;
+					grid-row-end: 3;
+				}
+				@include media(">phone", "<tablet"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 2;
+					grid-row-end: 3;
+				}
+				@include media(">=tablet", "<desktop"){
 					grid-column-start: 2;
-    				grid-column-end: 3;
+					grid-column-end: 3;
 					grid-row-start: 1;
-    				grid-row-end: 2;
-					height: 32vw !important
+					grid-row-end: 2;
+					height: 32vw !important;
 				}
-				&.grid-2 {
+				@include media(">=desktop"){
+					grid-column-start: 2;
+					grid-column-end: 3;
+					grid-row-start: 1;
+					grid-row-end: 2;
+					height: 32vw !important;
+				}
+			}
+			&.grid-2 {
+				@include media("<=phone"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 3;
+					grid-row-end: 4;
+				}
+				@include media(">phone", "<tablet"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 3;
+					grid-row-end: 4;
+				}
+				@include media(">=tablet", "<desktop"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 2;
+					grid-row-end: 3;
+					height: 32vw !important;
+				}	
+				@include media(">=desktop"){
 					grid-column-start: 3;
-    				grid-column-end: 4;
+					grid-column-end: 4;
 					grid-row-start: 1;
-    				grid-row-end: 2;
+					grid-row-end: 2;
 				}
-				&.grid-3 {
+			}
+			&.grid-3 {
+				@include media("<=phone"){
 					grid-column-start: 1;
-    				grid-column-end: 2;
-					grid-row-start: 2;
-    				grid-row-end: 3;
+					grid-column-end: 2;
+					grid-row-start: 4;
+					grid-row-end: 5;
 				}
-				&.grid-4 {
+				@include media(">phone", "<tablet"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 4;
+					grid-row-end: 5;
+				}
+				@include media(">=tablet", "<desktop"){
 					grid-column-start: 2;
-    				grid-column-end: 3;
+					grid-column-end: 3;
 					grid-row-start: 2;
-    				grid-row-end: 3;
+					grid-row-end: 3;
+					margin-top: -9rem;
+				}	
+				@include media(">=desktop"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 2;
+					grid-row-end: 3;
+				}
+			}
+			&.grid-4 {
+				grid-column-start: 2;
+				grid-column-end: 3;
+				grid-row-start: 2;
+				grid-row-end: 3;
+
+				@include media("<=phone"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 5;
+					grid-row-end: 6;
+				}
+				@include media(">phone", "<tablet"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 5;
+					grid-row-end: 6;
+				}
+				@include media(">=tablet", "<desktop"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 3;
+					grid-row-end: 4;
+					margin-top: -9rem;
+				}	
+				@include media(">=desktop"){
+					grid-column-start: 2;
+					grid-column-end: 3;
+					grid-row-start: 2;
+					grid-row-end: 3;
 					height: 30vw !important;
 					margin-top: 5rem;
 				}
-				&.grid-5 {
-					grid-column-start: 3;
-    				grid-column-end: 4;
-					grid-row-start: 2;
-    				grid-row-end: 3;
-				}
-				&.grid-6 {
+			}
+			&.grid-5 {
+				@include media("<=phone"){
 					grid-column-start: 1;
-    				grid-column-end: 2;
-					grid-row-start: 3;
-    				grid-row-end: 4;
+					grid-column-end: 2;
+					grid-row-start: 6;
+					grid-row-end: 7;
 				}
-				&.grid-7 {
+				@include media(">phone", "<tablet"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 6;
+					grid-row-end: 7;
+				}
+				@include media(">=tablet", "<desktop"){
 					grid-column-start: 2;
-    				grid-column-end: 3;
+					grid-column-end: 3;
 					grid-row-start: 3;
-    				grid-row-end: 4;
+					grid-row-end: 4;
+					height: 32vw !important;
+				}	
+				@include media(">=desktop"){
+					grid-column-start: 3;
+					grid-column-end: 4;
+					grid-row-start: 2;
+					grid-row-end: 3;
+				}
+			}
+			&.grid-6 {
+				@include media("<=phone"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 7;
+					grid-row-end: 8;
+				}
+				@include media(">phone", "<tablet"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 7;
+					grid-row-end: 8;
+				}
+				@include media(">=tablet", "<desktop"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 4;
+					grid-row-end: 5;
+					margin-top: 0rem !important;
+				}
+				@include media(">=desktop"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 3;
+					grid-row-end: 4;
+				}	
+			}
+			&.grid-7 {
+				@include media("<=phone"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 8;
+					grid-row-end: 9;
+				}
+				@include media(">phone", "<tablet"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 8;
+					grid-row-end: 9;
+				}
+				@include media(">=tablet", "<desktop"){
+					grid-column-start: 2;
+					grid-column-end: 3;
+					grid-row-start: 4;
+					grid-row-end: 5;
+					margin-top: -9rem;
+				}	
+				@include media(">=desktop"){
+					grid-column-start: 2;
+					grid-column-end: 3;
+					grid-row-start: 3;
+					grid-row-end: 4;
 					height: 28vw !important;
 					margin-top: 8rem;
-				}
-				&.grid-8 {
-					grid-column-start: 3;
-    				grid-column-end: 4;
-					grid-row-start: 3;
-    				grid-row-end: 4;
-				}
-				&.grid-9 {
+				}	
+			}
+			&.grid-8 {
+				@include media("<=phone"){
 					grid-column-start: 1;
-    				grid-column-end: 2;
-					grid-row-start: 4;
-    				grid-row-end: 5;
+					grid-column-end: 2;
+					grid-row-start: 9;
+					grid-row-end: 10;
 				}
-				&.grid-10 {
+				@include media(">phone", "<tablet"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 9;
+					grid-row-end: 10;
+				}
+				@include media(">=tablet", "<desktop"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 5;
+					grid-row-end: 6;
+					margin-top: 0rem !important;
+				}	
+				@include media(">=desktop"){
+					grid-column-start: 3;
+					grid-column-end: 4;
+					grid-row-start: 3;
+					grid-row-end: 4;
+				}	
+			}
+			&.grid-9 {
+				@include media("<=phone"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 10;
+					grid-row-end: 11;
+				}
+				@include media(">phone", "<tablet"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 10;
+					grid-row-end: 11;
+				}
+				@include media(">=tablet", "<desktop"){
 					grid-column-start: 2;
-    				grid-column-end: 3;
+					grid-column-end: 3;
+					grid-row-start: 5;
+					grid-row-end: 6;
+					
+				}	
+				@include media(">=desktop"){
+					grid-column-start: 1;
+					grid-column-end: 2;
 					grid-row-start: 4;
-    				grid-row-end: 5;
+					grid-row-end: 5;
+				}	
+			}
+			&.grid-10 {
+				@include media("<=phone"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 11;
+					grid-row-end: 12;
+				}
+				@include media(">phone", "<tablet"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 11;
+					grid-row-end: 12;
+				}
+				@include media(">=tablet", "<desktop"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 6;
+					grid-row-end: 7;
+				}	
+				@include media(">=desktop"){
+					grid-column-start: 2;
+					grid-column-end: 3;
+					grid-row-start: 4;
+					grid-row-end: 5;
 					height: 26vw !important;
 					margin-top: 10rem;
+				}	
+			}
+			&.grid-11 {
+				@include media("<=phone"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 12;
+					grid-row-end: 13 ;
 				}
-				&.grid-11 {
+				@include media(">phone", "<=425px"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 12;
+					grid-row-end: 13 ;
+				}
+				@include media(">=426px", "<768px"){
+					grid-column-start: 1;
+					grid-column-end: 2;
+					grid-row-start: 12;
+					grid-row-end: 13 ;
+				}
+				@include media(">=tablet", "<desktop"){
+					grid-column-start: 2;
+					grid-column-end: 3;
+					grid-row-start: 6;
+					grid-row-end: 7;
+					
+				}
+				@include media(">=desktop"){
 					grid-column-start: 3;
-    				grid-column-end: 4;
+					grid-column-end: 4;
 					grid-row-start: 4;
-    				grid-row-end: 5;
-				}
+					grid-row-end: 5;
+				}		
 			}
 		}
 	}
+}
 </style>
